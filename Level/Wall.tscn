@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Level/Walls.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 256 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32, 256 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 4, 96 )
+
+[node name="Walls" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="top" type="CollisionShape2D" parent="."]
+position = Vector2( 32, -64 )
+shape = SubResource( 1 )
+
+[node name="top color" type="ColorRect" parent="top"]
+margin_left = -32.0
+margin_top = -256.0
+margin_right = 32.0
+margin_bottom = 256.0
+color = Color( 0.4, 0.196078, 0.0313726, 1 )
+
+[node name="bottom" type="CollisionShape2D" parent="."]
+position = Vector2( 32, 640 )
+shape = SubResource( 2 )
+
+[node name="bottom color" type="ColorRect" parent="bottom"]
+margin_left = -32.0
+margin_top = -256.0
+margin_right = 32.0
+margin_bottom = 256.0
+color = Color( 0.4, 0.196078, 0.0313726, 1 )
+
+[node name="point_gate" type="Area2D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="point_gate"]
+position = Vector2( 60, 288 )
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="." to="." method="_on_Walls_body_entered"]
+[connection signal="body_entered" from="point_gate" to="." method="_on_point_gate_body_entered"]
