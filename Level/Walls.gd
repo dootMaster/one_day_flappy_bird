@@ -9,6 +9,7 @@ export var WALLSPEED = -8
 
 func _ready():
 	timer = get_parent().get_node("WallTimer")
+	timer.autostart = true
 	wall_manager = get_parent().get_node("wall_reset")
 	death = get_parent().get_node("Death").get_child(0)
 	bird = get_parent().get_node("bird")
